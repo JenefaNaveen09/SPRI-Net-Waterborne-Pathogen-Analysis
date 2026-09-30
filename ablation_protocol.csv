@@ -1,0 +1,6 @@
+Configuration,Purpose
+Classification-only ConvNeXt V2,Image-classification baseline
+Localization-only ConvNeXt V2-FPN,Localization baseline
+Shared encoder without ROI-guided pooling,Effect of regional guidance
+Full multi-task model without boundary term,Effect of boundary consistency
+Full WaterPath-MTLNet,Complete configuration

@@ -1,0 +1,15 @@
+# Package constraints explicitly present in the notebook
+timm>=1.0.15
+albumentations>=1.4.20
+pycocotools
+seaborn
+scikit-learn
+
+# Imported directly by the notebook
+torch
+torchvision
+numpy
+pandas
+matplotlib
+opencv-python
+tqdm

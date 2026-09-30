@@ -1,0 +1,45 @@
+{
+  "model_name": "WaterPath-MTLNet",
+  "framework": "PyTorch + timm",
+  "encoder": {
+    "name": "convnextv2_tiny.fcmae_ft_in22k_in1k",
+    "pretrained": true,
+    "features_only": true,
+    "out_indices": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "localization_branch": {
+    "decoder": "Feature Pyramid Network",
+    "fpn_width": 192,
+    "lateral_projection": "1x1 convolution at each encoder level",
+    "smoothing_block": "3x3 Conv2d + BatchNorm2d + GELU",
+    "fusion": {
+      "concatenate_all_pyramid_levels": true,
+      "dropout2d": 0.1,
+      "output_channels": 192
+    },
+    "segmentation_head": "1x1 Conv2d from 192 channels to 6 mask classes",
+    "upsampling": "Bilinear interpolation with align_corners=False"
+  },
+  "classification_branch": {
+    "name": "ROIGatedClassifier",
+    "deepest_encoder_feature": true,
+    "hidden_dimension": 512,
+    "global_descriptor": "Adaptive average pooled deepest encoder feature",
+    "roi_descriptor": "Foreground-probability-weighted deepest encoder feature",
+    "foreground_probability": "1 - softmax(segmentation_logits)[:, background]",
+    "gate": "Sigmoid over concatenated projected global and ROI descriptors",
+    "classifier_head": "LayerNorm -> Dropout(0.25) -> Linear",
+    "output_classes": 5
+  },
+  "forward_outputs": [
+    "seg_logits",
+    "cls_logits",
+    "foreground"
+  ],
+  "reported_trainable_parameters_millions": 32.45
+}

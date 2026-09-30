@@ -1,0 +1,67 @@
+{
+  "format": "COCO",
+  "annotation_filename": "_annotations.coco.json",
+  "split_policy": "Use the official train, valid, and test directories without recursive split generation.",
+  "splits": {
+    "train": {
+      "images": 1055,
+      "annotations": 6430,
+      "multi_class_images": 0,
+      "missing_files": 0,
+      "polygon_or_rle_annotations": 6425,
+      "box_only_annotations": 5
+    },
+    "valid": {
+      "images": 301,
+      "annotations": 1668,
+      "multi_class_images": 0,
+      "missing_files": 0,
+      "polygon_or_rle_annotations": 1668,
+      "box_only_annotations": 0
+    },
+    "test": {
+      "images": 151,
+      "annotations": 924,
+      "multi_class_images": 0,
+      "missing_files": 0,
+      "polygon_or_rle_annotations": 924,
+      "box_only_annotations": 0
+    }
+  },
+  "duplicate_filenames_across_splits": {
+    "train_valid": 0,
+    "train_test": 0,
+    "valid_test": 0
+  },
+  "image_classes": [
+    "Astrovirus",
+    "Cryptosporidium",
+    "Giardia",
+    "Norovirus",
+    "Rotavirus"
+  ],
+  "mask_classes": [
+    "Background",
+    "Astrovirus",
+    "Cryptosporidium",
+    "Giardia",
+    "Norovirus",
+    "Rotavirus"
+  ],
+  "training_image_class_counts": {
+    "Astrovirus": 164,
+    "Cryptosporidium": 183,
+    "Giardia": 140,
+    "Norovirus": 284,
+    "Rotavirus": 284
+  },
+  "classification_branch_rule": "Images with exactly one represented pathogen class receive a classification label. Multi-class images would be retained for localization and excluded from the classification loss.",
+  "mask_construction": {
+    "polygon": "Rasterized using pycocotools.frPyObjects and mask decoding.",
+    "rle": "Decoded using pycocotools.",
+    "bbox_fallback": "Rectangle mask is used only when polygon/RLE geometry is unavailable.",
+    "overlap_rule": "Larger annotations are written first so smaller annotated regions remain visible."
+  },
+  "task_interpretation_from_notebook_audit": "segmentation",
+  "source": "Values reproduced from the uploaded notebook code and executed notebook outputs."
+}

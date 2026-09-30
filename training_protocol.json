@@ -1,0 +1,96 @@
+{
+  "sampling": {
+    "weighted_random_sampler": true,
+    "replacement": true,
+    "number_of_samples_per_epoch": 1055,
+    "class_weight_formula": "N / (K * class_count)",
+    "classification_weights_from_notebook_counts": {
+      "Astrovirus": 1.2865853658536586,
+      "Cryptosporidium": 1.1530054644808743,
+      "Giardia": 1.5071428571428571,
+      "Norovirus": 0.7429577464788732,
+      "Rotavirus": 0.7429577464788732
+    }
+  },
+  "pixel_class_weighting": {
+    "maximum_training_samples_used_for_estimation": 250,
+    "formula": "w_c = 1 / log(1.10 + frequency_c), then divide all weights by their mean",
+    "reported_rounded_weights": {
+      "Background": 0.195,
+      "Astrovirus": 1.332,
+      "Cryptosporidium": 1.118,
+      "Giardia": 1.242,
+      "Norovirus": 1.091,
+      "Rotavirus": 1.021
+    }
+  },
+  "losses": {
+    "segmentation": {
+      "weighted_cross_entropy_coefficient": 0.55,
+      "foreground_multiclass_dice_coefficient": 0.45,
+      "boundary_l1_coefficient": 0.15,
+      "boundary_operator": "max_pool2d(x) - min_pool2d(x), kernel_size=3",
+      "dice_background_excluded": true
+    },
+    "classification": {
+      "loss": "Weighted cross entropy",
+      "label_smoothing": 0.05,
+      "applied_only_when_class_valid": true
+    },
+    "multitask_total": "1.0 * segmentation_loss + 0.7 * classification_loss"
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0001
+  },
+  "scheduler": {
+    "name": "CosineAnnealingLR",
+    "T_max": 60,
+    "eta_min": 4e-06
+  },
+  "mixed_precision": {
+    "autocast": true,
+    "dtype_on_cuda": "float16",
+    "gradient_scaler": "torch.amp.GradScaler"
+  },
+  "gradient_clipping": {
+    "max_norm": 1.0
+  },
+  "training_control": {
+    "maximum_epochs": 60,
+    "early_stopping_patience": 12,
+    "validation_selection_score": "0.5 * (foreground_macro_dice + classification_macro_f1)",
+    "best_checkpoint_selected_only_on_validation_score": true,
+    "frozen_test_evaluated_after_best_checkpoint_restore": true
+  },
+  "checkpointing": {
+    "best": "best_waterpath_mtlnet.pt",
+    "last": "last_waterpath_mtlnet.pt",
+    "per_epoch_pattern": "epoch_{epoch:03d}_waterpath_mtlnet.pt",
+    "history_csv": "training_history.csv",
+    "checkpoint_contents": [
+      "epoch",
+      "model",
+      "optimizer",
+      "scheduler",
+      "scaler",
+      "config",
+      "class_names",
+      "validation_score",
+      "best_score",
+      "stale_epochs",
+      "history",
+      "train_metrics",
+      "valid_metrics",
+      "rng_state"
+    ]
+  },
+  "observed_run_note": {
+    "uploaded_notebook_restored_best_epoch": 25,
+    "restored_validation_score": 0.949004699437779,
+    "continuation_stopped_at_epoch": 37,
+    "reason": "early stopping",
+    "note": "These are recorded notebook outputs, not recommended fixed settings for a new run."
+  }
+}

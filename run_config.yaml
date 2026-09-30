@@ -1,0 +1,51 @@
+project: WaterPath-MTLNet
+seed: 42
+
+paths:
+  data_root: /content/gdrive/MyDrive/dataset/waterborne
+  output_dir: /content/gdrive/MyDrive/dataset/waterborne/q1_outputs
+
+data:
+  format: COCO
+  annotation_file: _annotations.coco.json
+  image_size: 384
+  classes:
+    - Astrovirus
+    - Cryptosporidium
+    - Giardia
+    - Norovirus
+    - Rotavirus
+
+model:
+  encoder: convnextv2_tiny.fcmae_ft_in22k_in1k
+  pretrained: true
+  fpn_width: 192
+  roi_classifier_hidden: 512
+
+training:
+  batch_size: 8
+  epochs: 60
+  patience: 12
+  optimizer: AdamW
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  scheduler: CosineAnnealingLR
+  eta_min: 0.000004
+  label_smoothing: 0.05
+  segmentation_weight: 1.0
+  classification_weight: 0.7
+  boundary_weight: 0.15
+  gradient_clip: 1.0
+  weighted_sampler: true
+  resume_training: true
+  save_every_epoch: true
+
+selection:
+  validation_score: "0.5 * (foreground_macro_dice + classification_macro_f1)"
+  frozen_test_after_best_checkpoint: true
+
+bootstrap:
+  iterations: 2000
+  seed: 42
+
+source_notebook_sha256: 5bcb88939010b3b33c23be68afb30e8e0bd6db98d034d3b43d2ca38e88a3b1cc

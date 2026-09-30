@@ -1,0 +1,22 @@
+{
+  "project": "WaterPath-MTLNet",
+  "data_root": "/content/gdrive/MyDrive/dataset/waterborne",
+  "output_dir": "/content/gdrive/MyDrive/dataset/waterborne/q1_outputs",
+  "encoder": "convnextv2_tiny.fcmae_ft_in22k_in1k",
+  "image_size": 384,
+  "batch_size": 8,
+  "epochs": 60,
+  "patience": 12,
+  "learning_rate": 0.0002,
+  "weight_decay": 0.0001,
+  "num_workers": 2,
+  "seed": 42,
+  "label_smoothing": 0.05,
+  "seg_weight": 1.0,
+  "cls_weight": 0.7,
+  "boundary_weight": 0.15,
+  "grad_clip": 1.0,
+  "use_weighted_sampler": true,
+  "resume_training": true,
+  "save_every_epoch": true
+}

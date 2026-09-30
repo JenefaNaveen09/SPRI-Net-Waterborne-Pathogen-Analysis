@@ -1,0 +1,40 @@
+{
+  "seed": 42,
+  "python_hash_seed_set": true,
+  "seeded_libraries": [
+    "random",
+    "numpy",
+    "torch",
+    "torch.cuda"
+  ],
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": true,
+  "device_selection": "cuda if available, otherwise cpu",
+  "rng_state_saved_in_checkpoint": [
+    "Python random",
+    "NumPy",
+    "PyTorch CPU",
+    "PyTorch CUDA when available"
+  ],
+  "rng_state_restored_for_full_training_state": true,
+  "data_loader": {
+    "batch_size": 8,
+    "num_workers": 2,
+    "pin_memory": "True when CUDA is available",
+    "persistent_workers": true
+  },
+  "figure_export": {
+    "formats": [
+      "PNG",
+      "PDF"
+    ],
+    "png_dpi": 300,
+    "colormap": "viridis",
+    "font_family": "DejaVu Sans"
+  },
+  "source_notebook": {
+    "filename": "Waterpathogen_Q1_Advanced_(3).ipynb",
+    "sha256": "5bcb88939010b3b33c23be68afb30e8e0bd6db98d034d3b43d2ca38e88a3b1cc"
+  },
+  "runtime_version_note": "The uploaded notebook specifies Python 3.x but does not record exact package versions from the executed Colab runtime. Exact versions are therefore not fabricated in this pack."
+}

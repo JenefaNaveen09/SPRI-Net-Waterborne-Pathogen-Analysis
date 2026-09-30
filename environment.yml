@@ -1,0 +1,20 @@
+name: waterpath-mtlnet
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - opencv
+  - tqdm
+  - pip:
+      - "timm>=1.0.15"
+      - "albumentations>=1.4.20"
+      - pycocotools
+      - torch
+      - torchvision

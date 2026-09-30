@@ -1,0 +1,69 @@
+{
+  "package_name": "WaterPath_Supplementary_Reproducibility_Pack",
+  "source_notebook": {
+    "filename": "Waterpathogen_Q1_Advanced_(3).ipynb",
+    "sha256": "5bcb88939010b3b33c23be68afb30e8e0bd6db98d034d3b43d2ca38e88a3b1cc"
+  },
+  "files": [
+    {
+      "filename": "SUPPLEMENTARY_README.md",
+      "size_bytes": 2663,
+      "sha256": "5c523710f95bfa1ec9df70e9b5c355de0469d7def8963ae293f99d1f66de6be7"
+    },
+    {
+      "filename": "ablation_protocol.csv",
+      "size_bytes": 336,
+      "sha256": "14645b3e8f154072edbdffb165e60ea6a53c23230ad963726d55986976a74029"
+    },
+    {
+      "filename": "config.json",
+      "size_bytes": 585,
+      "sha256": "b2192861ac1c82fed1a18665524543fab3ed45f15d440936957f6c559848d927"
+    },
+    {
+      "filename": "dataset_spec.json",
+      "size_bytes": 2030,
+      "sha256": "ec20defdd0105a6f49c5a9ce0bb116d0e9de4469dee457d96c64e16f04ba963e"
+    },
+    {
+      "filename": "environment.yml",
+      "size_bytes": 300,
+      "sha256": "3f86f287993eabd4fc7a6ad01f7abb362c772e48e8fc4cc9a03cdb1c015fdc64"
+    },
+    {
+      "filename": "evaluation_protocol.json",
+      "size_bytes": 2921,
+      "sha256": "e9e68089fe5816d117b9654ef7d86e612206ffd91b5d415c5e529b2526669095"
+    },
+    {
+      "filename": "model_spec.json",
+      "size_bytes": 1410,
+      "sha256": "846ccaab6989e37255b490150da63cc353d3159fa27432f47b391c7f4bc5ea35"
+    },
+    {
+      "filename": "preprocessing_augmentation.json",
+      "size_bytes": 1886,
+      "sha256": "a2453a51f46e557f0eecd16810d681f80821651f2ab77732358bffa6d07fdbd9"
+    },
+    {
+      "filename": "reproducibility.json",
+      "size_bytes": 1106,
+      "sha256": "805181fc9f36f697a0db0553b2b5dafb051d8cfb4c0cd619bca135983d6e9131"
+    },
+    {
+      "filename": "requirements.txt",
+      "size_bytes": 224,
+      "sha256": "037b8b1f4179f1cf67535d4a37029e57f7f29753f29c58f972e6909a63b15b71"
+    },
+    {
+      "filename": "run_config.yaml",
+      "size_bytes": 1100,
+      "sha256": "dbd8ef35a772a1bed776e0d6a95d594c5fb6daa28dabe8407c9f60840cbf8ac0"
+    },
+    {
+      "filename": "training_protocol.json",
+      "size_bytes": 2849,
+      "sha256": "970f9b35145c80b844befc5044cc8caf86e51fd5445572089a9439b55b04fc3d"
+    }
+  ]
+}

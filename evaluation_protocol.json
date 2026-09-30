@@ -1,0 +1,101 @@
+{
+  "frozen_test_policy": "Evaluate the test split after restoring the validation-selected best checkpoint.",
+  "classification_metrics": [
+    "Accuracy",
+    "Balanced accuracy",
+    "Per-class precision",
+    "Per-class recall",
+    "Per-class specificity",
+    "Per-class F1-score",
+    "Macro-F1",
+    "Weighted-F1",
+    "Per-class ROC-AUC",
+    "Macro ROC-AUC one-vs-rest",
+    "Per-class average precision",
+    "Macro average precision",
+    "Matthews correlation coefficient",
+    "Cohen kappa",
+    "Log loss"
+  ],
+  "localization_metrics": [
+    "Per-class Dice",
+    "Per-class IoU",
+    "Per-class precision",
+    "Per-class recall",
+    "Foreground macro-Dice",
+    "Foreground macro-IoU",
+    "Mean pixel accuracy",
+    "Per-image foreground Dice",
+    "Per-image foreground IoU",
+    "Boundary F1"
+  ],
+  "bootstrap_confidence_intervals": {
+    "resampling_unit": "test images",
+    "strategy": "class-stratified bootstrap",
+    "iterations": 2000,
+    "seed": 42,
+    "interval": "2.5th to 97.5th percentiles",
+    "metrics": [
+      "Accuracy",
+      "Macro-F1",
+      "Macro ROC-AUC",
+      "MCC"
+    ]
+  },
+  "calibration": {
+    "number_of_bins": 10,
+    "ece": "Expected calibration error weighted by bin sample count",
+    "selective_prediction": "Sort by maximum predicted probability and plot error rate versus coverage."
+  },
+  "boundary_analysis": {
+    "boundary_f1_tolerance_pixels": 2,
+    "morphological_boundary_kernel": [
+      3,
+      3
+    ]
+  },
+  "region_size_stratification": {
+    "small": "Reference foreground area < 2%",
+    "medium": "2% <= reference foreground area <= 10%",
+    "large": "Reference foreground area > 10%"
+  },
+  "classification_diagnostics": {
+    "confidence": "maximum class probability",
+    "top_two_margin": "largest probability minus second-largest probability",
+    "normalized_entropy": "entropy divided by log(number_of_classes)"
+  },
+  "explainability": {
+    "grad_cam": {
+      "feature_source": "deepest encoder feature map",
+      "target_default": "predicted class",
+      "normalization": "per-map min-max to [0,1]"
+    },
+    "occlusion_sensitivity": {
+      "patch_fraction": 0.16,
+      "stride_fraction": 0.05,
+      "batch_size": 32,
+      "occlusion_value_in_normalized_space": 0.0,
+      "gaussian_blur_sigma_fraction": 0.01,
+      "shared_display_scale_percentile": 99,
+      "overlay_visibility_threshold_fraction": 0.08
+    }
+  },
+  "embedding_visualization": {
+    "method": "PCA",
+    "components": 2,
+    "random_state": 42,
+    "source_embedding": "adaptive-average-pooled deepest encoder feature"
+  },
+  "latency_measurement": {
+    "batch_size": 1,
+    "warmup_iterations": 30,
+    "timed_repetitions": 100,
+    "summary": [
+      "median latency",
+      "latency IQR",
+      "throughput"
+    ],
+    "device_name": "runtime-dependent and written by the notebook"
+  },
+  "saved_prediction_table": "frozen_test_predictions.csv"
+}
