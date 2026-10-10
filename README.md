@@ -39,9 +39,4 @@ the supplementary package does not invent exact version numbers. If an exact sof
 required for submission, run `pip freeze > requirements-lock.txt` in the same Colab runtime used
 for the final experiment.
 
-## Recommended submission use
 
-For a journal supplementary archive, include this package together with the final executed notebook,
-the exported numerical CSV tables, and the validation-selected checkpoint if journal storage limits
-permit. Large per-epoch checkpoints are normally better deposited in an external research repository
-and referenced by DOI or permanent URL.
